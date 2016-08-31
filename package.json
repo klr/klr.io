@@ -1,0 +1,16 @@
+{
+  "name": "klr.io",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dist": "gulp"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-htmlmin": "^2.0.0",
+    "gulp-inline": "^0.1.1",
+    "gulp-minify-css": "^1.2.4"
+  }
+}
