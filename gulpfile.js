@@ -4,7 +4,7 @@ var inline = require('gulp-inline')
 var minifyCss = require('gulp-minify-css');
 
 gulp.task('default', function() {
-  gulp.src('src/*.html')
+  gulp.src('src/index.html')
     .pipe(inline({
       base: 'src/',
       css: minifyCss,
