@@ -32,6 +32,12 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background: #081719;
+  }
+}
+
 section {
   max-width: 650px;
   padding: 50px 0;
