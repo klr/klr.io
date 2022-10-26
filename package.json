@@ -1,16 +1,17 @@
 {
   "name": "klr.io",
   "version": "1.0.0",
-  "description": "",
+  "description": "Personal website",
   "scripts": {
-    "dist": "gulp"
+    "dev": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html && cp ./src/favicon.ico ./dist/favicon.ico"
   },
-  "author": "",
+  "author": "Karl Laurentius Roos",
   "license": "ISC",
-  "dependencies": {
-    "gulp": "^3.9.1",
-    "gulp-htmlmin": "^2.0.0",
-    "gulp-inline": "^0.1.1",
-    "gulp-minify-css": "^1.2.4"
+  "dependencies": {},
+  "devDependencies": {
+    "@parcel/packager-raw-url": "^2.7.0",
+    "@parcel/transformer-jsonld": "^2.7.0",
+    "parcel": "^2.7.0"
   }
 }
