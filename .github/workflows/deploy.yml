@@ -1,0 +1,32 @@
+name: Deploy
+on: [push]
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.13.0'
+
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+
+      - name: Upload to S3
+        run: |
+          aws s3 mv ./dist/index.html s3://klr.io/index.html --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers --cache-control 'public, must-revalidate, proxy-revalidate, max-age=60'
+          aws s3 sync ./dist/ s3://klr.io/ --acl public-read --exclude 'index.html'
