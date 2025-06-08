@@ -24,15 +24,12 @@ jobs:
 
       - name: Deploy to BunnyCDN
         uses: ayeressian/bunnycdn-storage-deploy@v2.3.0
-        env:
-          BUNNY_STORAGE: ${{ env.BUNNY_STORAGE }}
-          BUNNY_PULL_ZONE_ID: ${{ env.BUNNY_PULL_ZONE_ID }}
         with:
           source: "dist"
-          storageZoneName: "klr-io"
+          storageZoneName: ${{ vars.BUNNY_STORAGE }}
           storagePassword: "${{ secrets.BUNNY_API_STORAGE }}"
           accessKey: "${{ secrets.BUNNY_API }}"
-          pullZoneId: "3990810"
+          pullZoneId: "${{ vars.BUNNY_PULL_ZONE_ID }}"
           upload: "true"
           remove: "true"
           purgePullZone: "true"
