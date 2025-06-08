@@ -29,10 +29,10 @@ jobs:
           BUNNY_PULL_ZONE_ID: ${{ env.BUNNY_PULL_ZONE_ID }}
         with:
           source: "dist"
-          storageZoneName: "${{ env.BUNNY_STORAGE }}"
+          storageZoneName: "klr-io"
           storagePassword: "${{ secrets.BUNNY_API_STORAGE }}"
           accessKey: "${{ secrets.BUNNY_API }}"
-          pullZoneId: "${{ env.BUNNY_PULL_ZONE_ID }}"
+          pullZoneId: "3990810"
           upload: "true"
           remove: "true"
           purgePullZone: "true"
