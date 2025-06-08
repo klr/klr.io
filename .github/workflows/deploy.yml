@@ -22,12 +22,14 @@ jobs:
           npm install
           npm run build
 
-      - name: Deploy to Edge Storage
-        uses: own3d/bunny-action@main
-        env:
-          BUNNY_API_ACCESS_KEY: ${{ secrets.BUNNY_API }}
-          BUNNY_STORAGE_USERNAME: ${{ env.BUNNY_STORAGE }}
-          BUNNY_STORAGE_PASSWORD: ${{ secrets.BUNNY_API_STORAGE }}
-          BUNNY_PULL_ZONE_ID: ${{ env.BUNNY_PULL_ZONE_ID }}
+      - name: Deploy to BunnyCDN
+        uses: ayeressian/bunnycdn-storage-deploy@v2.3.0
         with:
-          args: deploy --dir=dist
+          source: "dist"
+          storageZoneName: "${{ env.BUNNY_STORAGE }}"
+          storagePassword: "${{ secrets.BUNNY_STORAGE }}"
+          accessKey: "${{ secrets.BUNNY_API }}"
+          pullZoneId: "${{ env.BUNNY_PULL_ZONE_ID }}"
+          upload: "true"
+          remove: "true"
+          purgePullZone: "true"
