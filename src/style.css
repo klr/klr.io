@@ -29,6 +29,27 @@ html, body {
 
 section {
   padding: 1rem;
+
+  position: relative;
+  z-index: 1;
+}
+
+body {
+  position: relative;
+}
+
+body:after {
+  height: 20rem;
+  width: 20rem;
+
+  background-color: #0997ff;
+  border-radius: 50%;
+
+  content: " ";
+  display: block;
+  position: fixed;
+  bottom: -12rem;
+  right: -12rem;
 }
 
 a {
